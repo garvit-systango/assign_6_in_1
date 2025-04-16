@@ -1,14 +1,15 @@
 import './App.css'
-import ProductList from './components/ProductList'
-
+import AppRoutes from './routes/AppRoutes'
 function App() {
+  
 
   return (
     <>
+      
       <div>
-        Add routes here
+        <AppRoutes/>
       </div>
-      <ProductList/>
+      
     </>
   )
 }

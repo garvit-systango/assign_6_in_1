@@ -3,7 +3,7 @@ import { fetchUser } from '../axios/fetch'
 
 
 
-function ProductList() {
+function UseMemo() {
   const [product, setProduct] = useState([])
   const [search, setsearch] = useState('')
   
@@ -19,7 +19,11 @@ function ProductList() {
     getData()
     }, [])
 
-    console.log("data", product)
+    const filterProduct = useMemo(() => {
+      return product.filter(item => 
+        item.productName.toLowerCase().startsWith(search.toLowerCase())
+      )
+    }, [product, search])
 
   return (
     <>
@@ -30,11 +34,11 @@ function ProductList() {
       placeholder='Search here...'
       />
       <ul>
-        {product.map((item) =>item.productName.toLowerCase().startsWith(search.toLowerCase()) && <li key={item.id}>{item.productName}</li>)}
+        {filterProduct.map((item) => <li key={item.id}>{item.productName}</li>)}
       </ul>
 
     </>
   )
 }
 
-export default ProductList
+export default UseMemo
