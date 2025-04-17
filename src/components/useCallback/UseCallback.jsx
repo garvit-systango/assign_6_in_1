@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import Button from './usable/Button'
-import ToggleTheme from './useCallback/ToggleTheme'
-import Counter from './useCallback/Counter'
+import Button from '../usable/Button'
+import ToggleTheme from './ToggleTheme'
+import Counter from './Counter'
 
 
 function UseCallback() {
@@ -11,11 +11,11 @@ function UseCallback() {
         return localStorage.getItem("theme")
     })
 
-    const handleTheme = () => {
+    const handleTheme = useCallback(() => {
         const newTheme = theme === "light" ? "dark" : "light"
         setTheme(newTheme)
         localStorage.setItem("theme", newTheme)
-    }
+    }, [theme])
 
     const handleCount = useCallback(() => {
         setCount(count => count+1)
@@ -40,5 +40,4 @@ function UseCallback() {
   )
 }
 
-// export default UseCallback
-export default React.memo(UseCallback)
+export default UseCallback

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 function ToggleTheme(get) {
+  console.log("theme")
     
 
   return (
@@ -10,4 +11,4 @@ function ToggleTheme(get) {
   )
 }
 
-export default ToggleTheme
+export default React.memo(ToggleTheme)
